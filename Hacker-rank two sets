@@ -1,0 +1,47 @@
+class Solution{
+public static void main(String args[])
+{
+    Scanner sc=new Scanner(System.in);
+    int i,j;
+    int n=sc.nextInt();
+    int m=sc.nextInt();
+    int a[]=new int[n];
+    int b[]=new int[m];
+    for(i=0;i<n;i++)
+    a[i]=sc.nextInt();
+    for(i=0;i<m;i++)
+    b[i]=sc.nextInt();
+    Arrays.sort(a);
+    Arrays.sort(b);
+    Set<Integer> set1=new HashSet<Integer>();
+    Set<Integer> set2=new HashSet<Integer>();
+    if(a[n-1]>b[0])
+    System.out.println("0");
+    else{
+    for(i=a[n-1];i<=b[0];i++)
+    {
+        int count=0;
+      for(j=0;j<n;j++)
+      {
+          if(i%a[j]==0)
+          count++;
+      }
+      if(count==n)
+      set1.add(i);
+    }
+    for(int x:set1)
+    {
+        int count=0;
+      for(i=0;i<m;i++){
+         if(b[i]%x==0)
+         count++;
+      }
+      if(count==m)
+      set2.add(x);
+    }
+
+    set1.retainAll(set2);
+    System.out.println(set1.size());
+    }
+    }
+}
