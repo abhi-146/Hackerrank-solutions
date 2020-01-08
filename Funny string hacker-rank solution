@@ -1,0 +1,12 @@
+ StringBuilder str=new StringBuilder(s);
+    str=str.reverse();
+    String flag="Funny";
+    for(int i=0;i<s.length()-1;i++){
+        if(Math.abs((int)s.charAt(i)-(int)s.charAt(i+1))!=Math.abs((int)str.charAt(i)-(int)str.charAt(i+1)))
+        {
+            flag="Not Funny";
+            break;
+            }
+
+    }
+    return flag;
