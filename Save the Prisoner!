@@ -1,0 +1,7 @@
+  static int saveThePrisoner(int prisoner, int sweet, int start) {
+
+         if((sweet+start-1)%prisoner==0)
+           return(prisoner);
+            else 
+           return((sweet+start-1)%prisoner);
+    }
