@@ -1,0 +1,39 @@
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+      
+       int rd=sc.nextInt();
+       int rm=sc.nextInt();
+       int ry=sc.nextInt(); 
+       int id=sc.nextInt();
+       int im=sc.nextInt();
+       int iy=sc.nextInt();
+       int fine=0;
+       if(iy==ry)
+       {
+           if(im==rm)
+           {
+               fine=(rd-id)*15;
+
+           }
+           else if(rm>im)
+           {
+             fine=(rm-im)*500;
+           }
+
+       }
+       else if(ry>iy)
+       {
+           fine=10000;
+
+       }
+       if(fine>0)
+       System.out.println(fine);
+       else
+       System.out.println("0");
+    }
+}
+
+
