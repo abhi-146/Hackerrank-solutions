@@ -1,0 +1,26 @@
+public class Solution {
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int count=0,max=0,inc=1;
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        arr[i]=sc.nextInt();
+        Arrays.sort(arr);
+        for(int i=0;i<n;i=i+inc)
+        {
+            inc=0;
+            for(int j=i;j<n;j++){
+            if(Math.abs(arr[i]-arr[j])<=1)
+            count++;
+            if(arr[i]==arr[j])
+            inc++;
+           
+            }
+                max=Math.max(max,count);
+                count=0;
+        }
+        System.out.println(max);
+    }
+
+}
