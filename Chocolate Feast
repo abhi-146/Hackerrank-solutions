@@ -1,0 +1,12 @@
+static int chocolateFeast(int n, int c, int m) {
+        int choco=n/c;
+        int wrappers=choco;
+       
+        while(wrappers/m>0)
+        {
+            choco+=wrappers/m;
+            wrappers=wrappers-(wrappers/m)*m+wrappers/m;
+
+        }
+        return choco;
+ }
