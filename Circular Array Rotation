@@ -1,0 +1,20 @@
+
+public class Solution {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int k = sc.nextInt();
+    int q = sc.nextInt();
+    int rot = k % n;
+    int[] arr = new int[n];
+    for (int i = 0; i < n; i++)
+        arr[i] = sc.nextInt();
+    for (int i = 0; i < q; i++) {
+        int ix = sc.nextInt();
+        if (ix - rot >= 0)
+            System.out.println(arr[ix - rot]);
+        else
+            System.out.println(arr[ix - rot + arr.length]);
+        }
+    }
+}
