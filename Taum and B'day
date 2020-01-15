@@ -1,0 +1,3 @@
+ public static long taumBday(long b, long w, int bc, int wc, int z) {
+    
+    return (long)((bc < wc)? Math.min((b*bc)+(w*wc), (b*bc)+(w*bc)+(w*z)):Math.min((b*bc)+(w*wc), (w*wc)+(b*wc)+(b*z)));
