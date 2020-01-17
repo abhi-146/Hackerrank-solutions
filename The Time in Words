@@ -1,0 +1,37 @@
+
+public class Solution {
+
+  
+    static void timeInWords(int h, int m) {
+       String[] hours={"one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve"};
+       String[] minutes={"zero","one","two","three","four","five","six","seven","eight", "nine","ten","eleven", "twelve","thirteen","fourteen","fifteen","sixteen","seventeen", "eighteen","nineteen","twenty","twenty one","twenty two","twenty three", "twenty four", "twenty five","twenty six","twenty seven","twenty eight", "twenty nine"};
+       if(m==0)
+       System.out.print(hours[h-1]+" o' clock");
+       else if(m==1)
+       System.out.print("one minute past "+hours[h-1]);
+       else if(m==15)
+       System.out.print("quarter past "+hours[h-1]);
+       else if(m>1&&m<30)
+       System.out.print(minutes[m]+" minutes past "+hours[h-1]);
+       else if(m==30)
+       System.out.print("half past "+hours[h-1]);
+       else if(m==45)
+       System.out.print("quarter to "+hours[h]);
+       else 
+       {
+            System.out.print(minutes[(60-m)]+" minutes to "+hours[h]);
+       }
+
+       
+
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int h = scanner.nextInt();
+        int m = scanner.nextInt();
+        timeInWords(h, m);
+        scanner.close();
+    }
+}
