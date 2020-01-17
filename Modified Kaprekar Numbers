@@ -1,0 +1,21 @@
+static void kaprekarNumbers(int p, int q) {
+     int count =0;
+     for(int i=p;i<=q;i++)
+     {
+     BigInteger square=new BigInteger("0");
+     square=(BigInteger.valueOf(i)).multiply(BigInteger.valueOf(i));
+     String str=square.toString();
+     
+    String left  = str.substring(0, str.length() / 2);
+    String right = str.substring(str.length() / 2);
+     int numL = (left.isEmpty())  ? 0 : Integer.parseInt(left);
+     int numR = (right.isEmpty()) ? 0 : Integer.parseInt(right);
+        if (numL + numR == i) {
+            System.out.print(i+" ");
+            count++;}
+            
+
+            }
+            if(count==0)
+            System.out.println("INVALID RANGE");
+    }
