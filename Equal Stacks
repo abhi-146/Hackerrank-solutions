@@ -1,0 +1,49 @@
+public class Solution {
+
+   
+    static int equalStacks(int[] h1, int[] h2, int[] h3) {
+        Stack<Integer> st1=new Stack<>();
+        Stack<Integer> st2=new Stack<>();
+        Stack<Integer> st3=new Stack<>();
+        int sum=0;
+        for(int i=h1.length-1;i>=0;i--)
+        {
+           sum+=h1[i];
+           st1.add(sum);
+        }
+        sum=0;
+        for(int i=h2.length-1;i>=0;i--)
+        {
+            sum+=h2[i];
+            st2.add(sum);
+        }
+        sum=0;
+        for(int i=h3.length-1;i>=0;i--)
+        {
+            sum+=h3[i];
+            st3.add(sum);
+        }
+        while(true)
+        {
+            if(st1.isEmpty()||st2.isEmpty()||st3.isEmpty())
+            return 0;
+
+            int c1=st1.peek();
+            int c2=st2.peek();
+            int c3=st3.peek();
+
+            if(c1==c2&&c2==c3)
+            return c1;
+
+            int max=Math.max(Math.max(c1,c2),c3);
+
+            if(max==c1)
+            st1.pop();
+            else if(max==c2)
+            st2.pop();
+            else
+            st3.pop();
+
+        }
+
+    }
