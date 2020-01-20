@@ -1,0 +1,11 @@
+  static int beautifulBinaryString(String b) {
+        String regex="010";
+        Pattern pat=Pattern.compile(regex);
+        Matcher match=pat.matcher(b);
+        int count=0;
+        while(match.find())
+        {
+            count++;
+        }
+        return count;
+         }
