@@ -1,0 +1,17 @@
+ static String[] cavityMap(String[] grid) {
+        int n=grid.length;
+        for(int i=1;i<n-1;i++)
+        {
+            for(int j=1;j<n-1;j++)
+            {
+               if((int)grid[i].charAt(j)>(int)grid[i].charAt(j+1)&&(int)grid[i].charAt(j)>(int)grid[i].charAt(j-1)&&(int)grid[i].charAt(j)>(int)grid[i-1].charAt(j)&&(int)grid[i].charAt(j)>(int)grid[i+1].charAt(j))
+               {
+                 String str = grid[i].substring(0,j)+'X'+grid[i].substring(j+1);
+                 grid[i]=str;
+               }
+            }
+        }
+        return grid;
+
+
+    }
