@@ -1,0 +1,100 @@
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class Solution {
+    static long[][] power(long[][] base,long p)
+    {
+        long res[][] = new long[2][2];
+        res[0][0]=1;
+        res[0][1]=0;
+        res[1][0]=0;
+        res[1][1]=1;
+        while(p>0)
+        {
+        if(p%2==1)
+         {
+            p = p - 1;
+            res = multiply(res,base);
+         }
+        else
+         {
+            p = p/2;
+            base = multiply(base,base);
+         }
+
+        }
+        return res;
+        
+    }
+    static long[][] multiply(long[][] a,long[][] b)
+    {
+       long res[][] = new long[2][2];
+       for(int i=0;i<2;i++)
+       {
+
+           for(int j=0;j<2;j++)
+           {
+               res[i][j]=0;
+               for(int k=0;k<2;k++)
+               res[i][j] += ((a[i][k]*b[k][j])%1000000007);
+              
+           }
+       }
+       return res;
+    }
+
+
+
+    static long solve(long a, long b, long n) {
+        if(n == 0) return a;
+        else if(n == 1) return b;
+        else
+        {
+        long matrix[][] = new long[2][2];
+        long base[][] = new long[2][2];
+        matrix[0][0]=0;
+        matrix[0][1]=1;
+        matrix[1][0]=1;
+        matrix[1][1]=1;
+        base[0][0]=a;
+        base[0][1]=b;
+        matrix = power(matrix,n);
+        base = multiply(base,matrix);
+        return base[0][0]%1000000007;
+        }
+       
+
+    }
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        long t = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        for (long tItr = 0; tItr < t; tItr++) {
+            String[] abn = scanner.nextLine().split(" ");
+
+            long a = Integer.parseInt(abn[0]);
+
+            long b = Integer.parseInt(abn[1]);
+
+            long n = Integer.parseInt(abn[2]);
+
+            long matrixult = solve(a, b, n);
+
+            bufferedWriter.write(String.valueOf(matrixult));
+            
+            bufferedWriter.newLine();
+        }
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
