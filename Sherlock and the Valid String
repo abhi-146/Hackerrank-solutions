@@ -1,0 +1,84 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    // Complete the isValid function below.
+    static String isValid(String s) {
+       HashMap<Character,Integer> map = new HashMap<Character,Integer>();
+       for(int i=0;i<s.length();i++)
+       {
+           char ch = s.charAt(i);
+           if(map.containsKey(ch))
+           {
+               int x = (int)map.get(ch);
+              map.put(ch,++x);
+           }
+           else
+           {
+               map.put(ch,1);
+           }
+       }
+      Set<Integer> set = new HashSet<Integer>();
+      for(int i : map.values())
+      {
+          set.add(i);
+      }
+
+      if(set.size() > 2)
+      return "NO";
+      else if(set.size()==1)
+      return "YES";
+      else  //when size == 2;
+      {
+          int f1 = 0;
+          int f2 = 0;
+          int f1count = 0;
+          int f2count = 0;
+
+          for(int n : set){
+              if(f1 == 0)
+              f1 = n;
+              else 
+              f2 = n;
+          }
+           
+           for(int f : map.values())
+           {
+               if( f == f1)
+               f1count++;
+               else if(f == f2)
+               f2count++;
+           }
+           if((f1count == 1 && f1 == 1) || (f2count == 1 && f2 == 1))
+           return "YES";
+           else if(Math.abs(f1 - f2) == 1 && (f1count == 1|| f2count == 1))
+           return "YES";
+           else
+           return "NO";
+      }
+    }
+
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = scanner.nextLine();
+
+        String result = isValid(s);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
+
+        scanner.close();
+    }
+}
