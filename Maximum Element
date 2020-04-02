@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       int n = sc.nextInt();
+        Stack<Integer> main = new Stack<Integer>();
+        Stack<Integer> max = new Stack<Integer>();
+       while(n-- > 0)
+       {
+           
+           int q = sc.nextInt();
+
+           if(q == 1)
+           {
+               int a = sc.nextInt();
+               main.push(a);
+               if(max.isEmpty())
+               max.push(a);
+               else
+               {
+                   max.push(Math.max(a,max.peek()));
+               }
+
+           } 
+           else if(q == 2)
+           {
+                       main.pop();
+                       max.pop();
+                  
+           }
+               else if(q == 3)
+               {
+                   if(!max.isEmpty())
+                   System.out.println(max.peek());
+               }
+
+
+           
+       }
+    }
+}
