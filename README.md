@@ -1,1 +1,1 @@
-JAVA DS ALGO
+# Hackerrank Solutions
