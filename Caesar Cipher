@@ -1,0 +1,64 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+  
+  
+    // Complete the caesarCipher function below.
+    static void caesarCipher(String s, int k) {
+        char cArr[] = s.toCharArray();
+        StringBuilder sb = new StringBuilder("");
+        for(int i=0;i<cArr.length;i++)
+        {
+            int x = (int)cArr[i];
+            
+            if(x>=65 && x<=90)
+            {
+                x = (x+(k%26))%90;
+                if(x == 0)
+                    x=90;
+                else
+                x = x +((x<65&&x>0)?64:0);
+                System.out.print((char)(x));
+                
+                
+            }
+            else if(x>=97 && x<=122)
+            {
+                x = (x+(k%26))%122;
+                if(x == 0)
+                    x=122;
+                else
+                x = x +((x<97&&x>0)?96:0);
+                System.out.print((char)(x));
+            }
+            else
+                System.out.print(cArr[i]);
+            
+            
+        }
+        System.out.println();
+          
+
+
+    }
+
+    
+
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine();
+        String str = sc.nextLine();
+        int k = sc.nextInt();
+        caesarCipher(str,k);
+        
+      
+    }
+}
